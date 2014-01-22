@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+%html
+  %head
+    %title
+      PeerReview
+    = stylesheet_link_tag :application, media: :all
+    = javascript_include_tag :application
+    = csrf_meta_tags
+  %body
+    .messages.span8.offset3
+      - flash.each do |name, msg|
+        - if msg.is_a?(String)
+          %div{class: "alert alert-#{name == :notice ? "success" : "error"}"}
+            = msg
+            %a.close{href: "#", data: {dismiss: "alert"}}
+              &times;
+    = yield

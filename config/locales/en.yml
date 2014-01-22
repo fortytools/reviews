@@ -1,23 +1,43 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  sessions:
+    new:
+      title: Login
+  users:
+    new:
+      title: Register
+  user:
+    created: User created
+  session:
+    created: Logged in
+    destroyed: Logged out
+    ended: Your session has expired, please login again
+    needed: You need to be logged in to view this page
+    failed:
+      invalid_user_password: Invalid username or password
+  reviews:
+    index:
+      current_review: View current review
+      new: Start new review
+      no_reviews_to_finish: Hurray, you finished all reviews.
+      review_for: Review for %{username}
+      title:
+        current_review: Current review
+        reviews_to_finish: Reviews to finish
+      waiting_for: Still waiting for
+    edit:
+      title: Edit review
+    new:
+      add_reviewers: Add reviewer
+      title: Create new review
+    show:
+      bad: What went bad?
+      company: What can be done to help you?
+      goals: What are your goals?
+      good: What went good?
+      title: Review for %{user}
+      waiting_for: "The following people have not marked their review as finished: %{users}"
+    form:
+      bad: What went bad?
+      company: What can be done to help you?
+      goals: What are your goals?
+      good: What went good?

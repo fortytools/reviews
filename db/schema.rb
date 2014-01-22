@@ -11,11 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131218141228) do
+ActiveRecord::Schema.define(version: 20131219080318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "reviews", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
+    t.text     "good"
+    t.text     "bad"
+    t.text     "goals"
+    t.text     "company"
+    t.uuid     "user_id",                    null: false
+    t.uuid     "review_id"
+    t.boolean  "done",       default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sessions", force: true do |t|
+    t.string   "username"
+    t.string   "password"
+    t.boolean  "remember_me"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.string   "username",                                    null: false

@@ -1,0 +1,66 @@
+.container.review.show
+  .row
+    .columns.col-md-3
+    .columns.col-md-6.well
+      .page-header
+        %h1
+          = t('.title', user: @review.user.username)
+      - if @review.waiting_for.any?
+        %h3.text-danger
+          = t('.waiting_for', users: @review.waiting_for_names)
+      .review-item
+        %h2
+          = t('.good')
+        %p.original.lead
+          = @review.good
+        .comments
+          - @review.reviews.each do |review|
+            - if review.good.present?
+              %blockquote.comment
+                %p.text
+                  = review.good
+                .author.small
+                  = review.user.username
+
+      .review-item
+        %h2
+          = t('.bad')
+        %p.original.lead
+          = @review.bad
+        .comments
+          - @review.reviews.each do |review|
+            - if review.bad.present?
+              %blockquote.comment
+                %p.text
+                  = review.bad
+                .author.small
+                  = review.user.username
+
+      .review-item
+        %h2
+          = t('.goals')
+        %p.original
+          = @review.goals
+        .comments.lead
+          - @review.reviews.each do |review|
+            - if review.goals.present?
+              %blockquote.comment
+                %p.text
+                  = review.goals
+                .author.small
+                  = review.user.username
+
+      .review-item
+        %h2
+          = t('.company')
+        %p.original.lead
+          = @review.company
+        .comments
+          - @review.reviews.each do |review|
+            -if review.company.present?
+              %blockquote.comment
+                %p.text
+                  = review.company
+                .author.small
+                  = review.user.username
+    .columns.col-md-3

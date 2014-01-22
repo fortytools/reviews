@@ -1,0 +1,43 @@
+.container.review.index
+  .row.current
+    .column.col-md-3
+    .column.col-md-6.well
+      .row
+        .col-md-12
+          %h2
+            = t('.title.current_review')
+      - if @current_review.present?
+        .row
+          .col-md-8
+            = link_to t('.open_current_review'), review_path(@current_review)
+          .col-md-4
+            = link_to t('.edit_current_review'), edit_review_path(@current_review)
+        - if !@current_review.done
+          .row.waiting_for
+            .col-md-12
+              = t('.waiting_for')
+              %ul
+                - @current_review.waiting_for.each do |review|
+                  %li
+                    = review.user.display_name
+      - else
+        .row
+          .col-md-12
+            = link_to t('.new'), new_review_path
+    .column.col-md-6
+  .row.reviews-to-finish
+    .column.col-md-3
+    .column.col-md-6.well
+      .row
+        .col-md-12
+          %h2
+            = t('.title.reviews_to_finish')
+      .row
+        .col-md-12
+          - if @reviews_to_finish.any?
+            - @reviews_to_finish.each do |review|
+              = link_to t('.review_for', username: review.review.user.username), edit_review_path(review)
+          - else
+            = t('.no_reviews_to_finish')
+    .column.col-md-3
+

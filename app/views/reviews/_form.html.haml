@@ -1,0 +1,50 @@
+= simple_form_for @review do |f|
+  - if f.error_notification
+    .alert.alert-error.fade.in
+      %a.close{data: {dismiss: "alert"}, href: "#"} &times;
+      = f.error_notification
+  = f.input :user_id, as: :hidden, value: current_user.id
+
+  %label
+    = t('.good')
+  - if f.object.review.present?
+    .original
+      = f.object.review.good
+  = f.input :good, label: false
+
+  %label
+    = t('.bad')
+  - if f.object.review.present?
+    .original
+      = f.object.review.bad
+  = f.input :bad, label: false
+
+  %label
+    = t('.goals')
+  - if f.object.review.present?
+    .original
+      = f.object.review.goals
+  = f.input :goals, label: false
+
+  %label
+    = t('.company')
+  - if f.object.review.present?
+    .original
+      = f.object.review.company
+  = f.input :company, label: false
+
+  - if f.object.review.blank?
+    .form-group
+      %label
+        = t('.reviewers')
+      .reviews
+        = f.simple_fields_for :reviews do |r|
+          = render 'components/fields/review_fields', {f: r}
+      = link_to_add_fields(t('.add_reviewers'), f, :reviews, {container_selector: '.reviews', callback: 'initSelect2();'})
+
+  = f.input :done
+
+  = f.button :submit, class: 'btn btn-primary'
+
+:coffeescript
+  initSelect2()

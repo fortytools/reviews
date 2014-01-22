@@ -1,0 +1,17 @@
+.container.user.new
+  .row
+    .columns.col-md-3
+    .column.col-md-6.well
+      = simple_form_for @user do |f|
+        .page-header
+          %h2
+            = t('.title')
+        - if f.error_notification
+          .alert.alert-error.fade.in
+            %a.close{data: {dismiss: "alert"}, href: "#"} &times;
+            = f.error_notification
+        = f.input :username
+        = f.input :email
+        = f.input :password
+        = f.button :submit, class: 'btn btn-primary'
+    .columns.col-md-3

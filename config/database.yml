@@ -24,11 +24,20 @@ test:
   password: peer_review
   template: template0
 
+staging:
+  adapter: postgresql
+  encoding: unicode
+  database: peer_review
+  pool: 5
+  username: <%= ENV['RAILS_DB_USER'] %>
+  password: <%= ENV['RAILS_DB_PWD'] %>
+  template: template0
+
 production:
   adapter: postgresql
   encoding: unicode
   database: peer_review
   pool: 5
-  username: peer_review
-  password: peer_review
+  username: <%= ENV['RAILS_DB_USER'] %>
+  password: <%= ENV['RAILS_DB_PWD'] %>
   template: template0

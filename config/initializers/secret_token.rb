@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-PeerReview::Application.config.secret_key_base = '6b161f0b368d50634a3e06c9c9e512be154c76fed964a2763a155ae99fd5629d99fdfd0bf2b73ecaa74ee23a53f3a729f5984b5cb37c82028ca7ab128e7a41f3'
+PeerReview::Application.config.secret_key_base = ENV['RAILS_SECRE_TKEY'] || 'db1d1f0b6d8d50d64a6e0dc9c9e512be154c7dfed9d4a27d6a155ae99fd5d29d99fdfd0bf2b76ecaa74ee26a56f6a729f5984b5cb67c82028ca7ab128e7a41f6'
