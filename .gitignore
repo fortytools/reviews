@@ -1,4 +1,5 @@
+.rsync_cache
 /.bundle
 /log
-/tmp
 /public/assets/source_maps/*
+/tmp
