@@ -1,0 +1,4 @@
+= t('.title', user: @review.user.username)
+
+= t('.content', user: @review.review.user.username)
+= edit_review_url(@review.id)

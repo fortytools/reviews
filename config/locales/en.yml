@@ -41,3 +41,9 @@ en:
       company: What can be done to help you?
       goals: What are your goals?
       good: What went good?
+  review_mailer:
+    new_review_assigned:
+      subject: "%{user} assigned you a new review"
+      title: "Hey %{user},"
+      content: "%{user} assigned you a new review."
+      link: "Open it"

@@ -19,6 +19,9 @@ class ReviewsController < ApplicationController
 
   def create
     if @review.update_attributes(review_params)
+      @review.reviews each do |review|
+        ReviewMailer.new_review_assigned(review)
+      end
       redirect_to root_path
     else
       render "new"
@@ -29,7 +32,14 @@ class ReviewsController < ApplicationController
   end
 
   def update
+    previous_reviews = @review.reviews.to_set
+
     if @review.update_attributes(review_params)
+      current_reviews = @review.reviews.to_set
+      new_reviews = current_reviews - previous_reviews
+      new_reviews.each do |review|
+        ReviewMailer.new_review_assigned(review)
+      end
       redirect_to root_path
     else
       render "edit"

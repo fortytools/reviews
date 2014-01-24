@@ -1,0 +1,6 @@
+.subject
+  = t('.title', user: @review.user.username)
+.content
+  = t('.content', user: @review.review.user.username)
+  %br
+  = link_to t('.link'), edit_review_url(@review.id)
